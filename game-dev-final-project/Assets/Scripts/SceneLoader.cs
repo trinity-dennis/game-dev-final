@@ -9,9 +9,12 @@ public class SceneLoader : MonoBehaviour
     public float transitionTime = 1f;
 
     // Update is called once per frame
-    public void OnStartButtonClicked()
-    {
+    public void OnStartButtonClicked(){
         LoadNextScene();  
+    }
+
+    public void OnQuitButtonClicked(){
+        Application.Quit();
     }
 
     public void LoadNextScene(){
