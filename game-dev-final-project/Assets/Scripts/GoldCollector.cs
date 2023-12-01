@@ -17,6 +17,9 @@ public class GoldCollector : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {   
+            // play collect sound using AudioManager singleton
+            AudioManager.Instance.PlayCollectSound(1.5f);
+
             // add to score
             goldTracker.AddScore(goldAdded);
             

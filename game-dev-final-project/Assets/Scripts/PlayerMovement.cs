@@ -14,6 +14,25 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Check if the character collided with a platform
+        if (collision.gameObject.CompareTag("MovingLily") || collision.gameObject.CompareTag("MovingBlock"))
+        {
+            // Attach the character to the platform
+            transform.parent = collision.transform;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        // Detach the character from the platform when leaving
+        if (collision.gameObject.CompareTag("MovingLily") || collision.gameObject.CompareTag("MovingBlock"))
+        {
+            transform.parent = null;
+        }
+    }
+
     public void MoveRB(Vector3 vel){
         rb.velocity = new Vector3(vel.x * speed, rb.velocity.y);
 

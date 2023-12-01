@@ -7,6 +7,7 @@ public class GoldTracker : MonoBehaviour
 {
     private Text goldText;
     private int collected = 0;
+    public int goldTarget = 5; // Set the target value
 
     void Start()
     {
@@ -29,11 +30,16 @@ public class GoldTracker : MonoBehaviour
         UpdateGoldText();
     }
 
+    public bool HasReachedTarget()
+    {
+        return collected >= goldTarget;
+    }
+
     private void UpdateGoldText()
     {
         if (goldText != null)
         {
-            goldText.text = "Gold Collected: " + collected.ToString();
+            goldText.text = "Gold Collected: " + collected.ToString() + "/" + goldTarget.ToString();
         }
     }
 }
